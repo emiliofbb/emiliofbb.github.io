@@ -1,0 +1,217 @@
+:root{
+    --text-color: rgb(250, 219, 172);
+    --bg-color: rgba(18, 29, 33, 0.9);
+    --effect-color: rgba(185, 250, 248, 98);
+    --fill-out: var(--text-color);
+    --fill-in: var(--bg-color);
+}
+
+body {
+    font-family: monospace;
+    color: var(--text-color);
+    margin: 0.5rem 1.25rem 2rem;
+    background-color: var(--bg-color);
+}
+
+#click-something {
+    position: absolute;
+    top: -50px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 0.02rem solid white;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.name-container {
+    flex-grow: 1;
+    display: flex;
+}
+
+.name-header {
+    user-select: none;
+    cursor: default;
+    position: relative;
+    width: fit-content;
+}
+
+.name-effect {
+    --effect-offset: 8em;
+    position: absolute;
+    width: calc(100% + var(--effect-offset));
+    height: calc(100% + var(--effect-offset));
+    fill: black;
+    inset: calc(var(--effect-offset) / -2);
+    pointer-events: none;
+}
+
+.border-glow,
+.border-line {
+    width: calc(100% - var(--effect-offset) + var(--effect-offset) / 8);
+    height: calc(100% - var(--effect-offset) + var(--effect-offset) / 8);
+    x: calc(var(--effect-offset) / 2 - (var(--effect-offset) / 8) / 2);
+    y: calc(var(--effect-offset) / 2 - (var(--effect-offset) / 8) / 2);
+    rx: 0.5rem;
+    stroke: transparent;
+    stroke-width: 3px;
+    stroke-dasharray: 17;
+    stroke-linecap: round;
+    fill: transparent;
+    transition: stroke-dashoffset 1000ms cubic-bezier(0.55, 0.01, 0.73, 0.3), stroke 750ms ease-in;
+}
+
+.filler,
+.filler-bloom {
+    width: calc(100% - var(--effect-offset) + var(--effect-offset) / 8);
+    height: calc(100% - var(--effect-offset) + var(--effect-offset) / 8);
+    x: calc(var(--effect-offset) / 2 - (var(--effect-offset) / 8) / 2);
+    y: calc(var(--effect-offset) / 2 - (var(--effect-offset) / 8) / 2);
+    rx: 0.5rem;
+    fill: transparent;
+}
+
+.border-glow {
+    filter: blur(5px);
+    stroke-width: 7px;
+}
+
+.name-header:hover .border-glow,
+.name-header:hover .border-line {
+    stroke-dashoffset: 975;
+    stroke: var(--effect-color);
+}
+
+.social-medias {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.linker {
+    display: flex;
+}
+
+.instagram-svg {
+    cursor: pointer;
+}
+
+.linkedin-svg {
+    fill: var(--fill-out);
+    cursor: pointer;
+}
+
+.github-svg {
+    fill: var(--fill-out);
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.sections-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.left-section {
+    flex: 1;
+    flex-grow: 0;
+}
+
+.left-section h1:nth-child(1) {
+    font-size: 1.75rem;
+    margin-top: 1em;
+    cursor: default;
+    user-select: none;
+}
+
+.left-section h1:nth-child(2) {
+    font-size: 3.5rem;
+    margin-top: 0.5em;
+    max-width: 14ch;
+    margin-bottom: 1em;
+    cursor: default;
+    user-select: none;
+}
+
+.rigth-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.text-info {
+    max-width: 45ch;
+    font-size: 1.25rem;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+}
+
+.contact-button {
+    border: 0.1em solid var(--bg-color);
+    color: var(--bg-color);
+    background-color: var(--text-color);
+    border-radius: 1.25em;
+    padding: 0.5em 1em;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0em 0em 50px 1px var(--effect-color);
+}
+
+.contact-button:hover {
+    animation: button-color-change 1500ms ease-in-out infinite;
+}
+
+@keyframes button-color-change {
+    0% {
+        color: var(--bg-color);
+        background-color: var(--text-color);
+        border: 0.1em solid var(--bg-color);
+        box-shadow: 0em 0em 50px 1px var(--text-color);
+    }
+    50% {
+        color: var(--bg-color);
+        background-color: var(--effect-color);
+        border: 0.1em solid white;
+        box-shadow: 0em 0em 50px 1px var(--effect-color);
+    }
+    100% {
+        color: var(--bg-color);
+        background-color: var(--text-color);
+        border: 0.1em solid var(--bg-color);
+        box-shadow: 0em 0em 50px 1px var(--text-color);
+    }
+}
+
+@keyframes name-animation {
+    from {
+        fill: transparent;
+    }
+    to {
+        fill: var(--effect-color);
+        filter: blur(calc(var(--effect-offset) / 4));
+    }
+}
+
+@media (max-width: 465px) {
+
+    .name-container {
+        justify-content: center;
+    }
+
+    .name-header {
+        text-align: center;
+    }
+
+    .social-medias{
+        padding-bottom: 1rem;
+    }
+}
