@@ -147,6 +147,12 @@ header{
     align-items: center;
 }
 
+.my-photo {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
 .text-info {
     max-width: 45ch;
     font-size: 1.25rem;
