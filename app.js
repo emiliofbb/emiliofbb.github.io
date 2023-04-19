@@ -9,9 +9,9 @@ const heightCut = 40;
 var textHalfWidth = 0;
 
 const textValues = [
-  "Holis",
-  "Que clieackas cabron",
-  "JasJas De loquisimos tron",
+  "Please, don't touch my words.",
+  "Why are you clicking here?",
+  "Are you trying to touch the text?",
 ];
 
 const valuesLength = textValues.length;
